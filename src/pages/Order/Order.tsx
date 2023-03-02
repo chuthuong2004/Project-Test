@@ -159,6 +159,7 @@ const Order = () => {
           >
             <FormOrder
               action="add"
+              isOpen={openPopup.add}
               onClose={() => setOpenPopup((prev) => ({ ...prev, add: false }))}
             />
           </PopUp>
@@ -174,6 +175,7 @@ const Order = () => {
           <FormOrder
             order={editOrder}
             action="edit"
+            isOpen={openPopup.edit}
             onClose={() => setOpenPopup((prev) => ({ ...prev, edit: false }))}
           />
         </PopUp>

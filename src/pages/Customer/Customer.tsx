@@ -169,6 +169,7 @@ const Customer = () => {
           >
             <FormCustomer
               action="add"
+              isOpen={openPopup.add}
               onClose={() => setOpenPopup((prev) => ({ ...prev, add: false }))}
             />
           </PopUp>
@@ -193,6 +194,7 @@ const Customer = () => {
         >
           <FormCustomer
             customer={editCustomer}
+            isOpen={openPopup.edit}
             action="edit"
             onClose={() => setOpenPopup((prev) => ({ ...prev, edit: false }))}
           />

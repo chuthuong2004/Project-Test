@@ -1,5 +1,6 @@
 import classNames from 'classnames/bind';
 import React, { useEffect, useState } from 'react';
+import { TfiClose } from 'react-icons/tfi';
 import { useAppDispatch } from '../../app/hooks';
 import { addCustomer, updateCustomer } from '../../features/customerSlice';
 import { ICustomer } from '../../models/customer.model';
@@ -10,6 +11,7 @@ const cx = classNames.bind(styles);
 type Props = {
   action: 'add' | 'edit';
   customer?: ICustomer;
+  isOpen: boolean;
   onClose?: () => void;
 };
 const initialValue: Omit<ICustomer, 'id'> = {
@@ -22,7 +24,12 @@ const initialValue: Omit<ICustomer, 'id'> = {
   state: '',
   zipcode: '',
 };
-const FormCustomer: React.FC<Props> = ({ customer, action = 'add', onClose = () => {} }) => {
+const FormCustomer: React.FC<Props> = ({
+  isOpen,
+  customer,
+  action = 'add',
+  onClose = () => {},
+}) => {
   const dispatch = useAppDispatch();
 
   const [errorsInput, setErrorsInput] = useState<Omit<ICustomer, 'id'>>(initialValue);
@@ -63,8 +70,11 @@ const FormCustomer: React.FC<Props> = ({ customer, action = 'add', onClose = () 
   console.log(inputCustomer);
 
   return (
-    <div className={cx('form-customer')}>
+    <div className={cx('form-customer', !isOpen && 'closed')}>
       <h4>{action === 'add' ? 'Add New Customer' : 'Update Customer'}</h4>
+      <div className={cx('icon-close')} onClick={() => onClose()}>
+        <TfiClose />
+      </div>
       <form onSubmit={handleSubmit}>
         <div className={cx('form-control')}>
           <div className={cx('form-input')}>

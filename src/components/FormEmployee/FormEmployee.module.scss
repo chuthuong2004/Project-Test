@@ -12,6 +12,18 @@
   max-width: 100vh;
   -webkit-box-shadow: 0px 1px 8px 2px #464242;
   box-shadow: 0px 1px 8px 2px #464242;
+  transition: all 0.6s ease-in-out;
+  animation: fadeIn 0.6s ease-in-out;
+  &.closed {
+    animation: fadeOut 0.6s ease-in-out;
+  }
+  .icon-close {
+    position: absolute;
+    right: 2rem;
+    top: 1rem;
+    font-size: 2rem;
+    cursor: pointer;
+  }
   input {
     border: 1px solid #ccc;
   }
@@ -31,5 +43,23 @@
   }
   .btn {
     margin-top: 20px;
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -350px);
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    transform: translate(-50%, -350px);
+    opacity: 0;
   }
 }

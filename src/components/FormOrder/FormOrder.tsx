@@ -15,6 +15,7 @@ const cx = classNames.bind(styles);
 type Props = {
   action: 'add' | 'edit';
   order?: IOrder;
+  isOpen: boolean;
   onClose?: () => void;
 };
 const initialValue: Omit<IOrder, 'orderId'> = {
@@ -23,7 +24,7 @@ const initialValue: Omit<IOrder, 'orderId'> = {
   shipDate: '',
   employeeId: '',
 };
-const FormOrder: React.FC<Props> = ({ order, action = 'add', onClose = () => {} }) => {
+const FormOrder: React.FC<Props> = ({ isOpen, order, action = 'add', onClose = () => {} }) => {
   const dispatch = useAppDispatch();
   const customers = useAppSelector(selectCustomers);
   const employees = useAppSelector(selectEmployees);
@@ -53,7 +54,7 @@ const FormOrder: React.FC<Props> = ({ order, action = 'add', onClose = () => {} 
   };
 
   return (
-    <div className={cx('form-customer')}>
+    <div className={cx('form-customer', !isOpen && 'closed')}>
       <h4>{action === 'add' ? 'Add New Order' : 'Update Order'}</h4>
       <div className={cx('icon-close')} onClick={() => onClose()}>
         <TfiClose />

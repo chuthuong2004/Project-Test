@@ -173,6 +173,7 @@ const Employee = () => {
           >
             <FormEmployee
               action="add"
+              isOpen={openPopup.add}
               onClose={() => setOpenPopup((prev) => ({ ...prev, add: false }))}
             />
           </PopUp>
@@ -187,6 +188,7 @@ const Employee = () => {
         >
           <FormEmployee
             employee={editEmployee}
+            isOpen={openPopup.edit}
             action="edit"
             onClose={() => setOpenPopup((prev) => ({ ...prev, edit: false }))}
           />

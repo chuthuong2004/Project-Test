@@ -1,5 +1,6 @@
 import classNames from 'classnames/bind';
 import React, { useEffect, useState } from 'react';
+import { TfiClose } from 'react-icons/tfi';
 import { useAppDispatch } from '../../app/hooks';
 import { addEmployee, updateEmployee } from '../../features/employeeSlice';
 import { IEmployee } from '../../models/employee.model';
@@ -11,6 +12,7 @@ const cx = classNames.bind(styles);
 type Props = {
   action: 'add' | 'edit';
   employee?: IEmployee;
+  isOpen: boolean;
   onClose?: () => void;
 };
 const initialValue: Omit<IEmployee, 'employeeId'> = {
@@ -25,7 +27,12 @@ const initialValue: Omit<IEmployee, 'employeeId'> = {
   state: '',
   zipCode: 0,
 };
-const FormEmployee: React.FC<Props> = ({ employee, action = 'add', onClose = () => {} }) => {
+const FormEmployee: React.FC<Props> = ({
+  isOpen,
+  employee,
+  action = 'add',
+  onClose = () => {},
+}) => {
   const dispatch = useAppDispatch();
   const [inputEmployee, setInputEmployee] = useState<Omit<IEmployee, 'employeeId'>>(initialValue);
   useEffect(() => {
@@ -60,8 +67,11 @@ const FormEmployee: React.FC<Props> = ({ employee, action = 'add', onClose = () 
   console.log(inputEmployee);
 
   return (
-    <div className={cx('form-customer')}>
+    <div className={cx('form-customer', !isOpen && 'closed')}>
       <h4>{action === 'add' ? 'Add New Employee' : 'Update Employee'}</h4>
+      <div className={cx('icon-close')} onClick={() => onClose()}>
+        <TfiClose />
+      </div>
       <form onSubmit={handleSubmit}>
         <div className={cx('form-control')}>
           <div className={cx('form-input')}>
