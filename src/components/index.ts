@@ -1,0 +1,11 @@
+export { default as Button } from './Button';
+export { default as GlobalStyles } from './GlobalStyles';
+export { default as Input } from './Input';
+export { default as Loading } from './Loading';
+export { default as PopUp } from './PopUp';
+export { default as SearchInput } from './SearchInput';
+export { default as Select } from './Select';
+export { default as Table } from './Table';
+export { default as FormCustomer } from './FormCustomer';
+export { default as FormEmployee } from './FormEmployee';
+export { default as FormOrder } from './FormOrder';
