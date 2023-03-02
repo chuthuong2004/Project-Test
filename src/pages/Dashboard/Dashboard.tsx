@@ -10,7 +10,7 @@ const Dashboard = () => {
       <div className={cx('content')}>
         <div className={cx('container-chart')}>
           <div className={cx('sales-chart')}>
-            <span className={cx('title')}>Sales Chart</span>
+            <span className={cx('title')}>Chart</span>
             <div className={cx('chart')}> Chart</div>
           </div>
         </div>
